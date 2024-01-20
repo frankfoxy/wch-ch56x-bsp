@@ -12,8 +12,10 @@
 
 /* ULED PB22 */
 #define BSP_ULED_PIN (GPIO_Pin_22)
-/* UBTN PB23 */
-#define BSP_UBTN_PIN (GPIO_Pin_23)
+///* UBTN PB23 */
+//#define BSP_UBTN_PIN (GPIO_Pin_23)
+/* UBTN PA13 */
+#define BSP_UBTN_PIN (GPIO_Pin_13)
 /* SWITCH PB24 */
 #define BSP_SWITCH_PIN (GPIO_Pin_24)
 
@@ -39,8 +41,11 @@ void bsp_gpio_init(void)
 	GPIOB_ModeCfg(BSP_ULED_PIN, GPIO_Highspeed_PP_8mA); // Output
 
 	/* Configure UBTN(PB23) Input Floating */
-	GPIOB_ResetBits(BSP_UBTN_PIN);
-	GPIOB_ModeCfg(BSP_UBTN_PIN, GPIO_ModeIN_Floating); // Input floating
+	//GPIOB_ResetBits(BSP_UBTN_PIN);
+	//GPIOB_ModeCfg(BSP_UBTN_PIN, GPIO_ModeIN_Floating); // Input floating
+
+	GPIOA_ResetBits(BSP_UBTN_PIN);
+	GPIOA_ModeCfg(BSP_UBTN_PIN, GPIO_ModeIN_Floating); // Input floating
 
 	/* Configure SWITCH(PB24) Input Pull-up (0=ON, 1=OFF) */
 	GPIOB_ResetBits(BSP_SWITCH_PIN);
@@ -57,7 +62,7 @@ void bsp_gpio_init(void)
  **/
 int bsp_ubtn(void)
 {
-	return GPIOB_ReadPortPin(BSP_UBTN_PIN);
+	return GPIOA_ReadPortPin(BSP_UBTN_PIN);
 }
 
 /*******************************************************************************

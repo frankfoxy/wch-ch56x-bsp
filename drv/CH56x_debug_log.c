@@ -166,7 +166,8 @@ void log_printf(const char *fmt, ...)
 #ifdef CH56x_DEBUG_LOG_BASIC_TIMESTAMP
 	print_size1 = sprintf(log_printf_buff, "0x%08X ", (uint32_t)(delta));
 #else
-	print_size1 = sprintf(log_printf_buff, "%02us %03ums %03uus ", sec, msec, usec);
+	//print_size1 = sprintf(log_printf_buff, "%02us %03ums %03uus ", sec, msec, usec);
+	print_size1 = sprintf(log_printf_buff, "[%02u.%03u%03u]", sec, msec, usec);
 #endif
 
 	va_start(va_args, fmt);
